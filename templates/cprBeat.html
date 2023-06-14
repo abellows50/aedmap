@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>CPR BEAT</h1>
+<script src="https://tonejs.github.io/build/Tone.js"></script>
+<script type="module">
+  import * as Tone from 'tone'
+  const synth = new Tone.Synth().toDestination();
+
+  //play a middle 'C' for the duration of an 8th note
+  
+  setInterval(() => synth.triggerAttackRelease("C4", "16n"), 9);
+</script>
+{% endblock %}

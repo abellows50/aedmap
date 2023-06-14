@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %} - FlaskApp</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+  <meta name="google-site-verification" content="bUmsgyIZtDUoMdZHg3PGqLWUE_mGe7YnXoxToJus-8E" />
+</head>
+<body {% block load %}{% endblock %}>
+    <nav>
+      <a href="{{ url_for('omapInCircle') }}">EMERGENCY AED ACCESS</a>
+      <a href="{{ url_for('index') }}">HOME</a>
+      <!--<a href="{{ url_for('nearme') }}">AED's Near Me</a>-->
+      <a href="{{ url_for('addPoint') }}">Add an AED Location</a>
+      <a href="{{ url_for('confirm') }}">Help Confirm Locations</a>
+      <a href="{{ url_for('omap') }}">Map</a>
+      <a href="{{ url_for('allSubmissions') }}">All Submisions</a>
+      <a href="{{ url_for('apiReasorces') }}">Api</a>
+      <a href="{{url_for('about_us')}}">About</a>
+    </nav>
+    <hr>
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
+  <p>Created by Abel Weiner Bellows</p>
+</body>
+</html>

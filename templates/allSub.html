@@ -1,0 +1,55 @@
+<!-- This code displays all submissions that meet a given criteria-->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<script src="{{url_for('static', filename='js/911Alert.js') }}"></script>
+  <h1>{{len}} submissions located that meet your criteria</h1>
+ <form method="post" enctype=multipart/form-data>
+   <h2>Filter</h2>
+   <!--FILTER ON APROVAL STATUS-->
+   <b><label>Aproval Status</label></b><br>
+   <input type=radio value=APPROVED! id=aproved name="aprovalStatus"><label for=aproved>Aproved</label><br>
+   <input type="radio" value="REJECTED!" id=rejected name="aprovalStatus"><label for=rejected>Rejected</label><br>
+   <input type="radio" value="NOT REVIEWED" id=notProcessed name="aprovalStatus"><label for=notProcessed>Not Processed</label><br>
+
+  <!--FILTER ON ADRESS OR LONG OR LAT-->
+   <b><label>Locational Information</label></b><br>
+   <input type=radio value=TRUE id=address name="ADDRESS"><label for=address>Show Address</label><br>
+   <input type="radio" value=TRUE id=latlong name="latlong"><label for=latlong>Show Lat-Long</label><br>
+   
+   <input type=submit>
+ </form>
+  {% if lines!=[] %}
+  <p><a href="{{url_for('instructions')}}">Instructions</a></p>
+  <div class="inline"><table border=1>
+    <thead>
+      <tr>
+      {%for key in header%}
+        {%if (key=='LATITUDE' and latLong) or (key=='LONGITUDE' and latLong) or (key=='ADDRESS' and address) or (key!='LATITUDE' and key!='LONGITUDE' and key!='ADDRESS')%}
+              <th>{{key}}</th>
+        {% endif %}
+        
+      {%endfor%}
+      </tr>
+    </thead>
+    <tbody>
+      {%for line in range(0, len)%}
+        <tr>
+          {%for key in header%}
+            {% if key=='FILENAME' %}
+              <td><div class=zoom><img width=100 src={{lines[line]['FILENAME']}}></div></td>
+            {%elif (key=='LATITUDE' and latLong) or (key=='LONGITUDE' and latLong) or (key=='ADDRESS' and address) or (key!='LATITUDE' and key!='LONGITUDE' and key!='ADDRESS')%}
+              <td>{{lines[line][key]}}</td>
+            {% endif %}
+          {%endfor%}
+        </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+  <iframe width=1000 height=1000 src="https://aed-map.abelbellows.repl.co/tmap"></iframe></div>
+  {% else %}
+  <h1>No Images Yet!</h1>
+  {% endif %}
+
+{% endblock %}

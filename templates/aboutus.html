@@ -1,0 +1,14 @@
+<!--This is the about us page-->
+
+{% extends 'base.html' %}
+{% block content %}
+<h1>About Us</h1>
+<p>
+  AED's are one of the most important life saving invesntions that exist in the modern world. When someone has a cardiac arrest, their chances of survival are directly linked to the time it takes to get an AED. In many emergencies, bystanders don't know were to find AED's - this can lead to fatal delays. This tool aims to solve that problem. By quickly alowing AED location to be determined, and showing the estimated tim e that the trip will take, we make it easier to auquire an AED when it really counts.
+</p>
+<br>
+<h1>How can you use this tool?</h1>
+<p>
+  This tool can be used to both log the locations of AED's and to respond to an emergency situations. By engaging in the logging of AED's, you help us to detect AED's that we could never have found, and help us to save lives. In an emergency, simply go to the <a href="{{url_for('omap')}}">map</a> section of the website and it will direct you to the nearest AED.
+</p>
+{% endblock %}

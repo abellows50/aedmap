@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Please authenticate to gain access to the acceptance portal.</h1>
+
+{% if wrong %}
+<div class=wrongPass>
+  <h1 color=red>WRONG PASSWORD. TRY AGAIN.</h1>
+</div>
+</br>
+</br>
+{% endif %}
+
+<form method="post" enctype="multipart/form-data">
+  <label>Pass: </label><input name=auth type=text>
+  <input type="submit">
+</form>
+{% endblock %}

@@ -1,0 +1,43 @@
+<!-- this page allows the user to crowd source confirm the AED's as valid-->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  {% if lines!=[] %}
+  <h1>Help To confirm AED location!</h1>
+  <p><a href="{{url_for('instructions')}}">Instructions</a></p>
+  <form method='POST' enctype=application/x-www-form-urlencoded>
+  <table border=1>
+    <thead>
+      <tr>
+      {%for key in header%}
+        <th>{{key}}</th>
+      {%endfor%}
+        <th>Approved?</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for line in range(0, len)%}
+        <tr>
+          {%for key in header%}
+            {% if key=='FILENAME' %}
+              <td><div class=zoom><img width=100 src={{lines[line]['FILENAME']}}></div></td>
+            {% else %}
+              <td>{{lines[line][key]}}</td>
+            {% endif %}
+          {%endfor%}
+          <td>
+            <input name='aproved?{{line}}' id=yes type="radio" value="Approved"><label for=yes>Approve</label>
+            <br>
+            <input name='aproved?{{line}}' id=no type="radio" value="Rejected"><label for=no>Reject</label>
+          </td>
+        </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+    <input type="submit">
+  </form>
+  {% else %}
+  <h1>Nothing to Process</h1>
+  {% endif %}
+{% endblock %}

@@ -1,1 +1,7 @@
+{% extends 'base.html' %}
 
+  {% block content %}
+      <h1>{% block title %} Welcome to the AED map crowdsourcing tool! {% endblock %}</h1>
+<center>
+<a href="{{url_for('omapInCircle')}}"><div class=emergency>EMERGENCY AED LOCATOR</div></a></center>
+{% endblock %}

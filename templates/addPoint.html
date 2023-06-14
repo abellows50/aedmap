@@ -1,0 +1,43 @@
+<!-- This code takes the users location and sends it (along with a pic of the AED) to the server-->
+
+{% extends 'base.html' %}
+
+{% block load %}
+onload="getLocation()"
+{% endblock %}
+
+{% block content %}
+<div class="centered">
+<h1>{% block title %} Upload AED Location {% endblock %}</h1>
+</div>
+</br>
+<div class="centered" width=15>
+    <form method="post" enctype=multipart/form-data>
+        <input type="hidden" name="location"
+               id='location'
+               value=""></input>
+        <label>Submit a picture of the AED here:</label>
+        <input type="file" name=pic id=pic required>
+        <br>
+        <label>Comments (general location, how to find, directions):</label>
+        <br>
+        <textarea name="comments" rows=5 columns=50></textarea>
+        <button type="submit" class="submit">Submit</button> 
+    </form>
+</div>
+    <script>
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(mylocation);
+        } 
+        else {
+          loc.innerHTML = "Geolocation is not supported by this browser.";
+        }
+      }
+      
+      function mylocation(position) {
+        x = document.getElementById('location');
+        x.value=position.coords.latitude + "," + position.coords.longitude;
+      }
+    </script>
+{% endblock %}

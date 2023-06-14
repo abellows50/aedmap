@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class=centered><H1>API Reasorces</H1></div>
+<p>The website supports a responsive API by http request, no api key is needed. Instructions are bellow.</p>
+<h2>Description:</h2>
+<p>This API makes requests to the server to get the aed's in a specific radius that are in our data base.</p>
+<br>
+<h2>Python Syntex</h2>
+<p>After downloading the file linked bellow (api.py) use this code to make requests</p>
+<div class=code>
+<code>
+  <b>import aed-api as aed</b><br>
+  #this initializes the api request object<br>
+  <b>myAedApi = aed.ApiRequest()</b><br>
+  <br>
+  #make a request<br>
+  <b>myAedApi.request(lat,long,radius,format)</b> #returns  the response value and saves it in myAedApi.response<br>
+</code>
+</div>
+<br>
+<p>The ApiRequest object has a few internal values that you are able to access:</p>
+<div class=code>
+<code>
+  <table border=black>
+    <tr><th>Api Property</th><th>What it does</th></tr>
+    <tr><td>.lat</td>,<td>the lat of our last request</td></tr>
+    <tr><td>.lng</td><td>the lng of your last request</td></tr>
+    <tr><td>.r</td><td>the radius of your last request</td></tr>
+    <tr><td>.format</td><td>the format of your last request</td></tr>
+    <tr><td>.response</td><td>the server response</td></tr>
+    <tr><td>.error</td><td>False if no error True if an error occured</td></tr>
+    <tr><td>.errorText</td><td>The text of the server error response</td></tr>
+  </table>
+</code></div>
+<a class=download href={{url_for('static',filename='download/api/aed-api.py')}} download=aed.py>Download Python file for API</a>
+
+<a class=download href={{url_for('static',filename='download/api/dist.zip')}} download>Obfuciated</a>
+{% endblock %}
