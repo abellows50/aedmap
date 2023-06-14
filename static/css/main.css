@@ -1,1 +1,80 @@
+.big submit {
+   background-color: orange; /* Green */
+   border: none;
+   color: white;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 30px;
+   margin: 4px 2px;
+   cursor: pointer;
+   border-radius: 12px;
+   height: 40px;
+   width: fit-content;
+}
+.code{
+  width:fit-content;
+  background-color:lightblue;
+  border: solid black 1px;
+}
+.big{
+  height:500px;
+}
+.inline{
+  display:inline-block;
+}
+  nav a {
+      color: #d64161;
+      font-size: 2em;
+      margin-left: 50px;
+      text-decoration: none;
+  }
+  .zoom {
+    transition: transform .2s; /* Animation */
+  }
 
+  .zoom:hover {
+    transform: scale(2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+body{
+  padding:10px;
+  border:solid, black,1px;
+  background-color:lightgray;
+}
+.wrongPass{
+  border:1px solid black;
+  width: fit content;
+  text-align:center;
+  margon:auto;
+  animation: flash 1s infinite;
+}
+@keyframes flash{
+  0% {
+    background: red;
+  }
+  100% {
+    background: white;
+  }
+}
+.centered{
+  margin:auto;
+  font-size:70px;
+  height: fit-content;
+  width:fit-content;
+  text-align:center;
+  background-color:darkgray;
+  border:3px solid black;
+  padding:10px
+}
+.emergency{
+  margin:auto;
+  vertical-align:center;
+  color:black;
+  font-size:70px;
+  height: 500px;
+  width:500px;
+  text-align:center;
+  background-color:red;
+  border:3px solid black;
+  padding:10px
+}
